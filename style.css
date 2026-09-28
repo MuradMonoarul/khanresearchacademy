@@ -334,13 +334,15 @@ footer {
     background: #0f172a;
     color: #94a3b8;
     text-align: center;
-    padding: 2rem 0;
-    margin-top: 4rem;
+    padding: 0.6rem 0;
+    margin-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 footer p {
-    font-size: 0.95rem;
+    font-size: 0.90rem;
+   line-height: 1.4; 
+    margin: 2px 0;
 }
 
 footer small {
