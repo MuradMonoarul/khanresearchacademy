@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initSuccessorSlider();
+	initNoticeBoard();
 });
 
 /**
@@ -98,4 +99,66 @@ function initSuccessorSlider() {
 
     // Start Auto Play
     startAutoPlay();
+}
+/**
+ * Notice Board Auto-rotate & Switcher
+ */
+function initNoticeBoard() {
+    const items = document.querySelectorAll('.notice-item');
+    const dotsContainer = document.getElementById('noticeDots');
+    const prevBtn = document.getElementById('prevNoticeBtn');
+    const nextBtn = document.getElementById('nextNoticeBtn');
+
+    if (items.length === 0) return;
+
+    let currentIndex = 0;
+    let timer = null;
+
+    // ডায়নামিকভাবে প্যাজিনেশন ডট (Dots) তৈরি করা
+    items.forEach((_, idx) => {
+        const dot = document.createElement('span');
+        dot.classList.add('notice-dot');
+        if (idx === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => showNotice(idx));
+        if (dotsContainer) dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.notice-dot');
+
+    // নির্দিষ্ট নোটিশ দেখানোর ফাংশন
+    function showNotice(index) {
+        items[currentIndex].classList.remove('active');
+        if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
+
+        currentIndex = (index + items.length) % items.length;
+
+        items[currentIndex].classList.add('active');
+        if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+    }
+
+    // পরের নোটিশে যাওয়ার ফাংশন
+    function nextNotice() {
+        showNotice(currentIndex + 1);
+    }
+
+    // আগের নোটিশে যাওয়ার ফাংশন
+    function prevNotice() {
+        showNotice(currentIndex - 1);
+    }
+
+    // বাটনের ক্লিক ইভেন্ট লিসেনার
+    if (nextBtn) nextBtn.addEventListener('click', () => { nextNotice(); resetTimer(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { prevNotice(); resetTimer(); });
+
+    // প্রতি ৫ সেকেন্ড পর পর স্বয়ংক্রিয়ভাবে নোটিশ পরিবর্তন হওয়া
+    function startTimer() {
+        timer = setInterval(nextNotice, 5000);
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        startTimer();
+    }
+
+    startTimer();
 }
