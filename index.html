@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Khan Research Academy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Modern Scoped Styles for Updated About, Vision & Mission Section */
+        #academy-about-redesign {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.07);
+            border: 1px solid #e2e8f0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1e293b;
+        }
+
+        .about-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .about-eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #4f46e5;
+            background: #eef2ff;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .about-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 0.75rem 0;
+            letter-spacing: -0.02em;
+        }
+
+        .about-divider {
+            width: 56px;
+            height: 4px;
+            background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+            border-radius: 2px;
+            margin: 0 auto;
+        }
+
+        .about-narrative {
+            max-width: 860px;
+            margin: 0 auto 2.75rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            font-size: 1.05rem;
+            line-height: 1.78;
+            color: #334155;
+        }
+
+        .about-narrative p {
+            margin: 0;
+        }
+
+        .about-lead {
+            font-size: 1.15rem;
+            color: #0f172a;
+            font-weight: 500;
+            border-left: 4px solid #4f46e5;
+            padding-left: 1.25rem;
+        }
+
+        .theme-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .theme-pill {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            color: #1e293b;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+        }
+
+        /* Vision & Mission Grid */
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.45fr;
+            gap: 1.75rem;
+            align-items: stretch;
+        }
+
+        .vision-card {
+            background: linear-gradient(145deg, #0f172a 0%, #1e1b4b 100%);
+            color: #f8fafc;
+            padding: 2.25rem;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.35);
+        }
+
+        .vision-card::after {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .vm-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .vision-card .vm-badge {
+            color: #38bdf8;
+        }
+
+        .vision-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+            color: #ffffff;
+        }
+
+        .vision-card p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #cbd5e1;
+            margin: 0;
+        }
+
+        .mission-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 2.25rem;
+            border-radius: 14px;
+        }
+
+        .mission-card .vm-badge {
+            color: #4f46e5;
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 1.25rem 0;
+            color: #0f172a;
+        }
+
+        .mission-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .mission-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            background: #ffffff;
+            padding: 0.9rem 1.1rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            font-size: 0.96rem;
+            line-height: 1.6;
+            color: #334155;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .mission-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+            border-color: #c7d2fe;
+        }
+
+        .mission-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #eef2ff;
+            color: #4f46e5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 860px) {
+            #academy-about-redesign {
+                padding: 2rem 1.25rem;
+            }
+            .vm-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <h1>DR. KHAN <span>RESEARCH ACADEMY</span></h1>
+                 <span class="sister-concern">Affiliated with  <b><a href="https://khansilab.com/" target="_blank">Dr. Khan Social Impact Lab </a> </b> </span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="resource-persons.html">Resource Persons</a></li>
+                    <li><a href="registration.html">Registration</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2>LEARN · PRACTICE · PUBLISH · GO FURTHER</h2>
+            <p>Practical, hands-on courses to build real skills, produce real outputs, and open global opportunities.</p>
+            <a href="courses.html" class="btn">Explore Courses</a>
+			
+			<!-- Live Notice Board Component -->
+            <div class="notice-board shadow-lg">
+                <div class="notice-header">
+                    <div class="notice-title">
+                        <span class="pulse-dot"></span>
+                        <h3>ACADEMY NOTICE BOARD</h3>
+                    </div>
+                    <span class="notice-badge">LIVE UPDATES</span>
+                </div>
+
+                <div class="notice-content">
+                    <ul class="notice-list" id="noticeList">
+                        <li class="notice-item active">
+                            <span class="notice-tag tag-urgent">🚨 Classes open </span>
+                            <p><strong>Research Methodology Fundamentals:</strong> Live Class starts  at <strong>JANUARY</strong> via Zoom.</p>
+                        </li>
+                        <li class="notice-item">
+                            <span class="notice-tag tag-next">📅 Next Course</span>
+                            <p><strong>2. Applied Research Design: From Idea to Proposal</strong> .</p>
+                        </li>
+                        <li class="notice-item">
+                            <span class="notice-tag tag-info">📢 Registration</span>
+                            <p>Early bird discount for <strong>COURSE-01</strong> ends this this month<a href="registration.html"> Enroll Now →</a></p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Controls for Navigation -->
+                <div class="notice-footer">
+                    <div class="notice-dots" id="noticeDots"></div>
+                    <div class="notice-controls">
+                        <button id="prevNoticeBtn" aria-label="Previous Notice">&larr;</button>
+                        <button id="nextNoticeBtn" aria-label="Next Notice">&rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notice pic Component -->
+            <div style="text-align: center; margin: 20px 0;">
+                <style>
+                    @keyframes softPulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.02); }
+                        100% { transform: scale(1); }
+                    }
+                    .pulse-banner {
+                        max-width: 60%; 
+                        height: auto; 
+                        border-radius: 8px; 
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                        animation: softPulse 1s infinite ease-in-out;
+                    }
+                </style>
+                
+                <img src="https://iili.io/nvTHG87.png" 
+                    alt="Dr. Khan Research Academy - Research Methodology Fundamentals Course" 
+                    class="pulse-banner">
+            </div> 
+        </section>
+
+        <!-- UPDATED ABOUT THE ACADEMY, VISION & MISSION SECTION -->
+        <section id="academy-about-redesign">
+            <div class="about-header">
+                <span class="about-eyebrow">Who We Are</span>
+                <h2>About the Academy</h2>
+                <div class="about-divider"></div>
+            </div>
+
+            <div class="about-narrative">
+                <p class="about-lead">
+                    Welcome to the <strong>Dr. Khan Research Academy</strong>. Building upon the foundational work of the <strong>Dr. Khan Social Impact Lab</strong>, the Academy serves as a dedicated hub for learning, mentorship, and capacity-building. We are committed to cultivating the next generation of reflexive, empowered scholars and practitioners who are equipped to tackle complex social challenges.
+                </p>
+
+                <p>
+                    Grounded in a <strong>Freirean critical pedagogy</strong>, our Academy views education as a dialogic, collaborative, and transformative process. We move beyond traditional, top-down models of learning to create an environment where knowledge is co-produced and learners are active agents in their own development. Our programs are designed to bridge the gap between rigorous academic inquiry and real-world social impact, focusing on themes central to our lab's work:
+                </p>
+
+                <div class="theme-pills">
+                    <span class="theme-pill">The Future of Work</span>
+                    <span class="theme-pill">Occupational Health</span>
+                    <span class="theme-pill">Adult Learning</span>
+                    <span class="theme-pill">Digital Transformations</span>
+                    <span class="theme-pill">Social Equity</span>
+                </div>
+
+                <p>
+                    The Academy offers a vibrant intellectual home for students, early-career researchers, and professionals. Through a range of training programs, workshops, and mentorship opportunities, we foster critical thinking, methodological rigor, and a deep commitment to challenging structural inequalities. We believe that by nurturing a community of critical and compassionate thinkers, we can collectively imagine and build more just and inclusive futures.
+                </p>
+            </div>
+
+            <div class="vm-grid">
+                <!-- Vision Card -->
+                <div class="vision-card">
+                    <span class="vm-badge">✦ Future Outlook</span>
+                    <h3>Our Vision</h3>
+                    <p>
+                        To be a globally recognized center of excellence for transformative education and research training, empowering a new generation of scholars and practitioners to create meaningful and equitable social change in Bangladesh and beyond.
+                    </p>
+                </div>
+
+                <!-- Mission Card -->
+                <div class="mission-card">
+                    <span class="vm-badge">✦ Core Commitments</span>
+                    <h3>Our Mission</h3>
+                    <ul class="mission-list">
+                        <li>
+                            <span class="mission-icon">✓</span>
+                            <span>To provide high-quality, critical, and participatory training in qualitative, mixed-methods, and participatory research methodologies.</span>
+                        </li>
+                        <li>
+                            <span class="mission-icon">✓</span>
+                            <span>To foster a collaborative and emancipatory learning environment where students, scholars, and practitioners can engage in dialogue and co-create knowledge.</span>
+                        </li>
+                        <li>
+                            <span class="mission-icon">✓</span>
+                            <span>To mentor and support the next generation of researchers and change-makers through structured programs, hands-on experience, and critical pedagogical approaches.</span>
+                        </li>
+                        <li>
+                            <span class="mission-icon">✓</span>
+                            <span>To translate rigorous research into accessible learning opportunities that inform policy, strengthen public understanding, and promote the well-being of workers and communities.</span>
+                        </li>
+                        <li>
+                            <span class="mission-icon">✓</span>
+                            <span>To uphold ethical, inclusive, and reflexive practices in all our educational programs, ensuring that we respect and amplify diverse voices and perspectives.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="pillars">
+            <h2 class="section-title">Core Pillars</h2>
+            <div class="grid">
+                <div class="card card-body">
+                    <h3>1. LEARN</h3>
+                    <p>Essential research skills and foundational methodologies.</p>
+                </div>
+                <div class="card card-body">
+                    <h3>2. PRACTICE</h3>
+                    <p>Apply learning to real-world projects with practical guidance.</p>
+                </div>
+                <div class="card card-body">
+                    <h3>3. CREATE</h3>
+                    <p>Develop high-quality, publishable research manuscripts.</p>
+                </div>
+                <div class="card card-body">
+                    <h3>4. GO FURTHER</h3>
+                    <p>Unlock global opportunities, graduate admissions, and scholarships.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Our Successors Section -->
+    <section class="successors-section">
+        <h2 class="section-title">OUR SUCCESSORS</h2>
+        <p class="section-subtitle">Celebrating our alumni making an impact globally</p>
+        
+        <div class="slider-wrapper">
+            <!-- Navigation Arrows -->
+            <button class="slider-btn prev-btn" aria-label="Previous">&#10094;</button>
+            
+            <div class="successor-slider">
+                <!-- Successor 1 -->
+                <div class="successor-card">
+                    <img src="https://khansilab.com/employee/Parboti.jpg?auto=format&fit=crop&w=400&q=80" alt="Successor 1" class="successor-img">
+                    <div class="successor-info">
+                        <h3>Parboti Das</h3>
+                        <p class="role">PhD Researcher</p>
+                        <p class="institution">Minnesota State University, Mankato</p>
+                        <span class="country-badge">United States of America</span>
+                        <blockquote class="quote">
+                            "Dr. Khan Research Academy gave me the exact foundation I needed."
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Successor 2 -->
+                <div class="successor-card">
+                    <img src="https://khansilab.com/employee/Tamim_Anowar.jpg?auto=format&fit=crop&w=300&q=80" alt="Successor 2" class="successor-img">
+                    <div class="successor-info">
+                        <h3>Tamim Anowar</h3>
+                        <p class="role">PhD student</p>
+                        <p class="institution">University of North Texas</p>
+                        <span class="country-badge">United States of America</span>
+                        <blockquote class="quote">
+                            "The hands-on systematic review course helped me publish my first high-impact Q1 journal paper."
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Successor 3 -->
+                <div class="successor-card">
+                    <img src="https://khansilab.com/employee/WhatsApp_Image_2026-04-12_at_9_02_51_PM2.jpeg?auto=format&fit=crop&w=300&q=80" alt="Successor 3" class="successor-img">
+                    <div class="successor-info">
+                        <h3>Farzana Nizam Prity</h3>
+                        <p class="role">Ph.D Student</p>
+                        <p class="institution">University of North Texas</p>
+                        <span class="country-badge">United States of America</span>
+                        <blockquote class="quote">
+                            "Exceptional mentorship! The guidance on qualitative research design transformed my academic career."
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- Successor 4 -->
+                <div class="successor-card">
+                    <img src="https://khansilab.com/employee/WhatsApp_Image_2026-06-24_at_3_52_09_AM.jpeg?auto=format&fit=crop&w=300&q=80" alt="Successor 4" class="successor-img">
+                    <div class="successor-info">
+                        <h3>Md. Mamunur Rashid</h3>
+                        <p class="role">LL.B(Hons) LL.M</p>
+                        <p class="institution">University of Glasgow</p>
+                        <span class="country-badge">United Kingdom</span>
+                        <blockquote class="quote">
+                            "From basic curiosity to a full master's scholarship—this academy bridged the whole gap for me."
+                        </blockquote>
+                    </div>
+                </div>
+                
+                <!-- Successor 5 -->
+                <div class="successor-card">
+                    <img src="https://khansilab.com/employee/Ahona_Singha_Formal_Photo.jpg?auto=format&fit=crop&w=300&q=80" alt="Successor 5" class="successor-img">
+                    <div class="successor-info">
+                        <h3>Ahona Singha</h3>
+                        <p class="role">LL.B(Hons) LL.M</p>
+                        <p class="institution">University of Murad</p>
+                        <span class="country-badge">United Kingdom</span>
+                        <blockquote class="quote">
+                            "From basic curiosity to a full master's scholarship—this academy bridged the whole gap for me."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-btn next-btn" aria-label="Next">&#10095;</button>
+        </div>
+
+        <!-- Pagination Dots Container -->
+        <div class="slider-dots"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Dr. Khan Social Impact Lab. All Rights Reserved.</p>
+        <div style="display: inline-block; background: linear-gradient(135deg, #1e293b, #0f172a); padding: 8px 16px; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); font-family: sans-serif;">
+            <span style="color: #94a3b8; font-size: 13px;">Developed at </span>
+            <a href="https://muradmonoarul.github.io/MuradUnitedStudio/" target="_blank" style="color: #38bdf8; font-weight: bold; font-size: 14px; text-decoration: none; letter-spacing: 0.5px;">
+                MURAD UNITED STUDIO
+            </a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
